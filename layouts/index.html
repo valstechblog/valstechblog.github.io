@@ -1,0 +1,14 @@
+{{ define "main" }}
+
+<div class="posts-list">
+{{ with .Site.GetPage "/blog" }}
+    {{ range first 10 (sort .Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
+        <div class="post">
+            <div class="date">{{ .Date | time.Format ":date_medium" }}</div>
+            <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+        </div>
+    {{ end }}
+{{ end }}
+</div>
+
+{{ end }}

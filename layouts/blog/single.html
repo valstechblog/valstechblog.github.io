@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="date">{{ .Date | time.Format ":date_medium" }}</div>
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+
+<script src="https://giscus.app/client.js"
+    data-repo="valstechblog/valstechblog.github.io"
+    data-repo-id="R_kgDOPJSioQ"
+    data-category="General"
+    data-category-id="DIC_kwDOPJSioc4DFdyu"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+</script>
+{{ end }}

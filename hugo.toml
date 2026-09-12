@@ -1,0 +1,15 @@
+baseURL = "https://valstech.blog/"
+title = "valstechblog"
+theme = "hugo-theme-console"
+defaultContentLanguage = "en"
+
+[params]
+  description = "valstechblog"
+
+  [[params.navlinks]]
+  name = "blog/"
+  url = "blog/"
+
+  [[params.navlinks]]
+  name = "twitter/"
+  url = "https://x.com/valstechblog"

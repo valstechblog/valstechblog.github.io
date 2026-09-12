@@ -1,0 +1,25 @@
+:root {
+  --display-h1-decoration: none;
+}
+
+.post h1 {
+  padding-bottom: 0;
+}
+
+#term-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: transparent;
+  padding: 0;
+  border-width: 0;
+  width: 0;
+}
+
+#term-output {
+  white-space: pre-wrap;
+  min-height: 1.4em;
+}
