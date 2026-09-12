@@ -105,7 +105,11 @@
   resize();
   input.focus();
 
-  document.addEventListener("click", function () {
-    input.focus();
-  });
+  var prompt = document.querySelector(".terminal-prompt");
+  if (prompt) {
+    prompt.addEventListener("click", function (e) {
+      if (e.target.closest("a, button")) return;
+      input.focus();
+    });
+  }
 })();
