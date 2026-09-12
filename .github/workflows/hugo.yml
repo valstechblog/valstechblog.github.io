@@ -38,10 +38,11 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build with Hugo
         run: |
+          BASE_URL="$(echo "${{ steps.pages.outputs.base_url }}" | sed 's#^http://#https://#')"
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "${BASE_URL}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
