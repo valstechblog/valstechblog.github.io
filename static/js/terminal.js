@@ -103,7 +103,11 @@
   });
 
   resize();
-  input.focus();
+
+  var isTouch = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+  if (!isTouch) {
+    input.focus();
+  }
 
   var prompt = document.querySelector(".terminal-prompt");
   if (prompt) {
