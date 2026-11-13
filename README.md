@@ -6,7 +6,7 @@ No Hugo, no framework: plain HTML, CSS and JavaScript in `site/`.
 ## Layout
 
 - `content/blog/<slug>/index.md` — posts in Markdown (front matter: `title`, `date`, optional `private = true`)
-- `build.py` — renders the posts into `site/` (pages, RSS, sitemap)
+- `build.py` — renders the posts into `site/` (pages, sitemap)
 - `site/css/osrs.css`, `site/js/osrs.js` — the theme (hand-edited)
 - `site/` — the deployed website
 

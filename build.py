@@ -19,7 +19,6 @@ import math
 import re
 import zlib
 from datetime import datetime, timezone
-from email.utils import format_datetime
 from pathlib import Path
 
 import markdown
@@ -169,9 +168,9 @@ ICON_HOME = px([(7, 1, 2, 1, "#8b2a1a"), (5, 2, 6, 1, "#8b2a1a"), (3, 3, 10, 1, 
 ICON_X = px([(2, 2, 2, 2, "#f0f0f0"), (4, 4, 2, 2, "#f0f0f0"), (6, 6, 4, 4, "#f0f0f0"), (10, 10, 2, 2, "#f0f0f0"),
              (12, 12, 2, 2, "#f0f0f0"), (12, 2, 2, 2, "#f0f0f0"), (10, 4, 2, 2, "#f0f0f0"), (4, 10, 2, 2, "#f0f0f0"),
              (2, 12, 2, 2, "#f0f0f0")])
-ICON_RSS = px([(2, 12, 2, 2, "#ff981f"), (2, 7, 2, 1, "#ff981f"), (4, 8, 2, 1, "#ff981f"), (6, 10, 1, 2, "#ff981f"),
-               (7, 12, 1, 2, "#ff981f"), (2, 2, 3, 1, "#ff981f"), (5, 3, 3, 1, "#ff981f"), (8, 4, 2, 2, "#ff981f"),
-               (10, 6, 2, 2, "#ff981f"), (11, 8, 1, 3, "#ff981f"), (12, 11, 1, 3, "#ff981f")])
+ICON_CAL = px([(2, 3, 12, 11, "#e9e1cc"), (2, 3, 12, 3, "#c4271a"), (4, 1, 2, 4, "#1a1410"), (10, 1, 2, 4, "#1a1410"),
+                (4, 8, 2, 2, "#5a4126"), (7, 8, 2, 2, "#5a4126"), (10, 8, 2, 2, "#5a4126"), (4, 11, 2, 2, "#5a4126"),
+                (7, 11, 2, 2, "#c4271a"), (1, 14, 14, 1, "#1a1410")])
 ICON_QUILL = px([(11, 1, 3, 1, "#f2efe6"), (9, 2, 5, 1, "#f2efe6"), (8, 3, 5, 1, "#dcd6c8"), (7, 4, 5, 1, "#f2efe6"),
                  (6, 5, 5, 1, "#dcd6c8"), (5, 6, 5, 1, "#f2efe6"), (5, 7, 4, 1, "#dcd6c8"), (4, 8, 4, 1, "#f2efe6"),
                  (4, 9, 3, 1, "#dcd6c8"), (3, 10, 2, 1, "#6b4a1e"), (2, 11, 2, 1, "#6b4a1e"), (1, 12, 2, 2, "#1a1410"),
@@ -205,7 +204,7 @@ def sidebar(posts):
         (ICON_QUESTS, "Words", f'{total_words / 1000:.1f}k', f"{total_words:,} words written"),
         (ICON_STATS, "Minutes", f'{total_minutes}', "Minutes to read everything"),
         (ICON_HOME, "Since", f'{first.year}' if first else "-", "Year of the first post"),
-        (ICON_RSS, "Latest", f'{latest:%b %y}' if latest else "-", "Most recent post"),
+        (ICON_CAL, "Latest", f'{latest:%b %y}' if latest else "-", "Most recent post"),
         (ICON_FRIENDS, "QP", '<span data-qp>0</span>', "Quest points: posts you've finished reading"),
     ]
     tile_html = "".join(
@@ -247,7 +246,6 @@ def sidebar(posts):
         <ul class="friends">
           <li><a href="{SITE['twitter']}" target="_blank" rel="noopener"><span>@valstechblog</span><span class="world">X</span></a></li>
           <li><a href="{SITE['github']}" target="_blank" rel="noopener"><span>valstechblog</span><span class="world">GitHub</span></a></li>
-          <li><a href="/index.xml"><span>RSS feed</span><span class="world">Feed</span></a></li>
         </ul>
       </section>
     </div>
@@ -255,7 +253,6 @@ def sidebar(posts):
       <a class="tab" href="/" title="Home">{ICON_HOME}</a>
       <a class="tab" href="/blog/" title="All quests">{ICON_QUESTS}</a>
       <a class="tab" href="{SITE['twitter']}" target="_blank" rel="noopener" title="valstechblog on X">{ICON_X}</a>
-      <a class="tab" href="/index.xml" title="RSS feed">{ICON_RSS}</a>
     </nav>
   </aside>"""
 
@@ -284,7 +281,6 @@ def page(posts, *, title, body, path, description="", slug="", extra_head=""):
 <meta name="twitter:site" content="@valstechblog">
 <meta name="theme-color" content="#3e3529">
 <link rel="icon" href="/favicon.png">
-<link rel="alternate" type="application/rss+xml" title="{SITE['title']}" href="/index.xml">
 <link rel="preload" href="/fonts/pixelify-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/crimson-pro-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/osrs.css">
@@ -353,34 +349,6 @@ def write(rel, text):
     path.write_text(text, encoding="utf-8")
 
 
-def rss(posts, self_path):
-    items = []
-    for p in posts:
-        link = SITE["url"] + p["url"]
-        when = format_datetime(p["date"].replace(tzinfo=p["date"].tzinfo or timezone.utc))
-        items.append(f"""  <item>
-    <title>{e(p['title'])}</title>
-    <link>{link}</link>
-    <guid>{link}</guid>
-    <pubDate>{when}</pubDate>
-    <description>{e(p['content'])}</description>
-  </item>""")
-    built = format_datetime(datetime.now(timezone.utc))
-    return f"""<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-  <title>{SITE['title']}</title>
-  <link>{SITE['url']}/</link>
-  <description>{SITE['tagline']}</description>
-  <language>en</language>
-  <lastBuildDate>{built}</lastBuildDate>
-  <atom:link href="{SITE['url']}{self_path}" rel="self" type="application/rss+xml"/>
-{chr(10).join(items)}
-</channel>
-</rss>
-"""
-
-
 def main():
     posts = load_posts()
 
@@ -442,9 +410,7 @@ def main():
 """
     write("404.html", page(posts, title="Page not found", body=nf, path="/404.html", extra_head=redirect))
 
-    # Feeds + sitemap
-    write("index.xml", rss(posts, "/index.xml"))
-    write("blog/index.xml", rss(posts, "/blog/index.xml"))
+    # Sitemap
     urls = ["/", "/blog/"] + [p["url"] for p in posts]
     sitemap = "\n".join(f"  <url><loc>{SITE['url']}{u}</loc></url>" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sitemap}\n</urlset>\n')
