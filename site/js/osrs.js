@@ -36,7 +36,6 @@
     var qp = questPoints();
     $$("[data-qp]").forEach(function (el) { el.textContent = qp; });
   }
-  paintQuests();
 
   /* ---------------------------------------------------------- side panel tabs */
 
@@ -51,28 +50,20 @@
     save("sessionStorage", "vtb.tab", name);
   }
   tabs.forEach(function (t) {
-    t.addEventListener("click", function () { showTab(t.getAttribute("data-tab")); });
+    t.addEventListener("click", function (ev) {
+      if (t.tagName === "A") ev.preventDefault();
+      showTab(t.getAttribute("data-tab"));
+    });
   });
-  // Pages that open a specific tab (e.g. inventory pages) keep it; elsewhere restore the last one used.
-  var activeTab = $(".tabs [data-tab].active");
+  // Restore the panel the reader last chose; otherwise the Quest List.
   var savedTab = load("sessionStorage", "vtb.tab", null);
-  if (activeTab && activeTab.getAttribute("data-tab") !== "quests") {
-    save("sessionStorage", "vtb.tab", activeTab.getAttribute("data-tab"));
-  } else if (savedTab && $('[data-panel="' + savedTab + '"]')) {
-    showTab(savedTab);
-  }
+  showTab(savedTab && $('[data-panel="' + savedTab + '"]') ? savedTab : "quests");
 
-  // Highlight the inventory item for the current page.
-  $$(".item").forEach(function (a) {
-    if (a.getAttribute("href") === window.location.pathname) a.setAttribute("aria-current", "page");
+  // Don't leave a focus highlight on side-panel buttons after a mouse click.
+  document.addEventListener("click", function (ev) {
+    var t = ev.target.closest && ev.target.closest(".sidepanel a, .sidepanel button");
+    if (t && ev.detail > 0) t.blur();
   });
-
-  // Keep the current quest in view in the quest list.
-  var currentLink = $('.quest-list [data-quest="' + current + '"]');
-  if (currentLink && currentLink.scrollIntoView) {
-    var body = $(".tab-body");
-    if (body) body.scrollTop = currentLink.offsetTop - body.clientHeight / 2;
-  }
 
   /* ---------------------------------------------------------- mouse-over text */
 
@@ -95,6 +86,7 @@
   function describeLink(a) {
     var quest = a.getAttribute("data-quest");
     if (quest && bySlug[quest]) return ["Read", bySlug[quest].title, "target"];
+    if (a.hasAttribute("data-tab")) return ["Open", a.getAttribute("title") || "", "target"];
     if (a.hasAttribute("data-verb")) return [a.getAttribute("data-verb"), a.getAttribute("data-name") || "", "target"];
     var href = a.getAttribute("href") || "";
     if (/^https?:\/\//.test(href)) {
@@ -172,7 +164,7 @@
         ev.preventDefault();
         var name = item.getAttribute("data-name");
         openMenu(ev.clientX, ev.clientY, [
-          { label: item.getAttribute("data-verb"), target: name, run: function () { window.location.href = item.getAttribute("href"); } },
+          { label: item.getAttribute("data-verb"), target: name, run: function () { item.click(); } },
           { label: "Examine", target: name, run: function () { examine(item.getAttribute("data-examine") || name); } },
           { label: "Cancel" }
         ]);
@@ -185,7 +177,7 @@
       ev.preventDefault();
       var status = completed[p.slug] ? "You've completed this quest." : "You haven't completed this quest yet.";
       openMenu(ev.clientX, ev.clientY, [
-        { label: "Read", target: p.title, run: function () { window.location.href = p.url; } },
+        { label: "Read", target: p.title, run: function () { a.click(); } },
         { label: "Examine", target: p.title, run: function () {
             examine("Published " + p.date + ". Length: " + p.length + " (" + p.words.toLocaleString() + " words). " + status);
           } },
@@ -202,29 +194,28 @@
   /* ---------------------------------------------------------- run energy (reading progress) */
 
   var runVal = $("#run-val");
-  var article = $(".post .prose");
   var world = $("#world");
+  var article = null;
 
   function updateRun() {
-    if (!runVal || !article) return;
+    if (!runVal) return;
+    if (!article) { runVal.textContent = 100; return; }
     var rect = article.getBoundingClientRect();
     var viewH = window.innerHeight;
     var total = rect.height - viewH * 0.6;
     var done = Math.min(1, Math.max(0, (viewH * 0.4 - rect.top) / Math.max(1, total)));
     runVal.textContent = Math.round(100 - done * 100);
   }
-  if (article) {
-    (world || window).addEventListener("scroll", updateRun, { passive: true });
-    window.addEventListener("scroll", updateRun, { passive: true });
-    window.addEventListener("resize", updateRun);
-    updateRun();
-  }
+  if (world) world.addEventListener("scroll", updateRun, { passive: true });
+  window.addEventListener("scroll", updateRun, { passive: true });
+  window.addEventListener("resize", updateRun);
 
   /* ---------------------------------------------------------- quest complete */
 
-  var end = $("#quest-end");
   var dialog = $("#quest-complete");
   var lastFocus = null;
+  var io = null;
+  var ioTimer = null;
 
   function xpDrop(amount) {
     var box = $("#xp-drops");
@@ -262,16 +253,122 @@
     document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !dialog.hidden) closeDialog(); });
   }
 
-  if (end && current && bySlug[current] && !completed[current] && "IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          io.disconnect();
-          completeQuest(bySlug[current]);
-        }
+  /* ---------------------------------------------------------- per-page setup */
+
+  function initPage() {
+    current = document.body.getAttribute("data-slug") || "";
+    paintQuests();
+
+    // Highlight the inventory item for the current page.
+    $$(".item").forEach(function (a) {
+      if (a.getAttribute("href") === window.location.pathname) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+
+    // Keep the current quest in view in the quest list.
+    var currentLink = current && $('.quest-list [data-quest="' + current + '"]');
+    var body = $(".tab-body");
+    if (currentLink && body && !currentLink.closest("[hidden]")) {
+      body.scrollTop = currentLink.offsetTop - body.clientHeight / 2;
+    }
+
+    article = $(".post .prose");
+    updateRun();
+
+    // Award the quest when the reader reaches the end of the post.
+    if (io) { io.disconnect(); io = null; }
+    clearTimeout(ioTimer);
+    var end = $("#quest-end");
+    var slug = current;
+    if (end && slug && bySlug[slug] && !completed[slug] && "IntersectionObserver" in window) {
+      io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && slug === current) {
+            io.disconnect();
+            completeQuest(bySlug[slug]);
+          }
+        });
+      }, { threshold: 1 });
+      // Wait a moment so a quick jump to the bottom of the page doesn't count.
+      var observer = io;
+      ioTimer = setTimeout(function () { observer.observe(end); }, 4000);
+    }
+  }
+  initPage();
+
+  /* ---------------------------------------------------------- in-place navigation */
+  // Clicking a link on this site swaps the scroll's contents instead of reloading
+  // the whole page, so the side panel stays put. Falls back to a normal page load.
+
+  var navToken = 0;
+
+  function sameSitePage(url) {
+    if (url.origin !== window.location.origin) return false;
+    var last = url.pathname.split("/").pop();
+    return last === "" || /\.html?$/.test(last);
+  }
+
+  function swapIn(doc, url) {
+    var next = doc.getElementById("world");
+    if (!next || !world) return false;
+    world.innerHTML = next.innerHTML;
+    document.title = doc.title;
+    document.body.setAttribute("data-slug", doc.body.getAttribute("data-slug") || "");
+    // Scripts added through innerHTML don't run; re-create them (the comments widget).
+    $$("script", world).forEach(function (old) {
+      var s = document.createElement("script");
+      Array.prototype.forEach.call(old.attributes, function (at) { s.setAttribute(at.name, at.value); });
+      s.text = old.text;
+      old.parentNode.replaceChild(s, old);
+    });
+    return true;
+  }
+
+  function scrollToTarget(hash) {
+    var target = hash && document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (target) { target.scrollIntoView(); return; }
+    if (world) world.scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+
+  function navigate(href, push) {
+    var url = new URL(href, window.location.href);
+    var token = ++navToken;
+    closeMenu();
+    fetch(url.pathname + url.search, { credentials: "same-origin" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("status " + r.status);
+        return r.text();
+      })
+      .then(function (html) {
+        if (token !== navToken) return;
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        if (push) window.history.pushState({}, "", url.href);
+        if (!swapIn(doc, url)) throw new Error("no content");
+        initPage();
+        scrollToTarget(url.hash);
+      })
+      .catch(function () {
+        if (token === navToken) window.location.href = url.href;
       });
-    }, { threshold: 1 });
-    // Wait a moment so a quick jump to the bottom of the page on load doesn't count.
-    setTimeout(function () { io.observe(end); }, 4000);
+  }
+
+  if (window.history && window.history.pushState && window.fetch && window.DOMParser && world) {
+    document.addEventListener("click", function (ev) {
+      if (ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+      var a = ev.target.closest && ev.target.closest("a[href]");
+      if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
+      var url = new URL(a.href, window.location.href);
+      if (!sameSitePage(url)) return;
+      if (url.pathname === window.location.pathname && url.search === window.location.search) {
+        if (url.hash) return;             // in-page anchor: let the browser handle it
+        ev.preventDefault();
+        scrollToTarget("");               // link to the page we're already on: just go to the top
+        return;
+      }
+      ev.preventDefault();
+      navigate(url.href, true);
+    });
+    window.addEventListener("popstate", function () { navigate(window.location.href, false); });
   }
 })();

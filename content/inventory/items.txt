@@ -1,0 +1,23 @@
+# Inventory items: the things shown in the Inventory tab of the side panel.
+#
+# One item per line, fields separated by " | ":
+#
+#   category | title | link
+#
+#   category  film, music or book (anything else also works). Sets the icon and the hover verb.
+#   title     shown under the icon, in the hover text and in the right-click menu. Keep it short.
+#   link      where a click goes: a full https:// address, or a page on this site like /blog/
+#
+# Lines starting with # are ignored. Items appear in the order listed. Example:
+#
+#   film | Some Film (2001) | https://letterboxd.com/film/some-film/
+
+film | Club Kid (2026) | https://letterboxd.com/film/club-kid/
+film | After Life (1998) | https://letterboxd.com/film/after-life/
+film | Blue Heron (2025) | https://letterboxd.com/film/blue-heron/
+music | A Deeper Understanding (2017) | https://pitchfork.com/reviews/albums/the-war-on-drugs-a-deeper-understanding/
+music | Kismet (2026) | https://www.song-bar.com/album-releases/matilda-mann-kismet-album-review
+music | Blue Island (2026) | https://pitchfork.com/reviews/albums/ravyn-lenae-blue-island/
+book | Early Sobrieties (2024) | https://www.nytimes.com/2024/05/06/books/review/michael-deagler-early-sobrieties.html
+book | Martyr! (2024) | https://mastersreview.com/book-review-martyr-by-kaveh-akbar/
+book | Wandering Stars (2024) | https://mastersreview.com/book-review-wandering-stars-by-tommy-orange/

@@ -167,10 +167,7 @@ ICON_FILM = px([(1, 6, 14, 9, "#2b2b2b"), (1, 6, 14, 1, "#555"), (3, 8, 10, 1, "
                 (3, 12, 10, 1, "#777"), (1, 2, 14, 3, "#f2f2f2"), (1, 2, 1, 3, "#1a1410"), (4, 2, 2, 3, "#1a1410"),
                 (8, 2, 2, 3, "#1a1410"), (12, 2, 2, 3, "#1a1410"), (1, 5, 14, 1, "#1a1410"), (0, 2, 1, 13, "#1a1410"),
                 (15, 2, 1, 13, "#1a1410"), (0, 15, 16, 1, "#1a1410")])
-ICON_MUSIC = px([(6, 1, 8, 2, "#1a1410"), (6, 3, 2, 9, "#1a1410"), (12, 3, 2, 8, "#1a1410"),
-                 (2, 11, 5, 3, "#d9a520"), (3, 10, 3, 1, "#d9a520"), (3, 14, 3, 1, "#d9a520"),
-                 (8, 10, 5, 3, "#d9a520"), (9, 9, 3, 1, "#d9a520"), (9, 13, 3, 1, "#d9a520"),
-                 (7, 3, 1, 1, "#5a4126"), (13, 3, 1, 1, "#5a4126")])
+ICON_MUSIC = px([(4, 0, 8, 1, "#1a1410"), (2, 1, 12, 1, "#1a1410"), (1, 2, 4, 1, "#1a1410"), (5, 2, 5, 1, "#4d4d4d"), (10, 2, 2, 1, "#1a1410"), (12, 2, 1, 1, "#9a9a9a"), (13, 2, 2, 1, "#1a1410"), (1, 3, 2, 1, "#1a1410"), (3, 3, 2, 1, "#4d4d4d"), (5, 3, 6, 1, "#1a1410"), (11, 3, 1, 1, "#4d4d4d"), (12, 3, 1, 1, "#9a9a9a"), (13, 3, 2, 1, "#1a1410"), (0, 4, 3, 1, "#1a1410"), (3, 4, 1, 1, "#4d4d4d"), (4, 4, 8, 1, "#1a1410"), (12, 4, 1, 1, "#4d4d4d"), (13, 4, 3, 1, "#1a1410"), (0, 5, 2, 1, "#1a1410"), (2, 5, 1, 1, "#4d4d4d"), (3, 5, 3, 1, "#1a1410"), (6, 5, 4, 1, "#c4271a"), (10, 5, 3, 1, "#1a1410"), (13, 5, 1, 1, "#4d4d4d"), (14, 5, 2, 1, "#1a1410"), (0, 6, 2, 1, "#1a1410"), (2, 6, 1, 1, "#4d4d4d"), (3, 6, 2, 1, "#1a1410"), (5, 6, 6, 1, "#c4271a"), (11, 6, 2, 1, "#1a1410"), (13, 6, 1, 1, "#4d4d4d"), (14, 6, 2, 1, "#1a1410"), (0, 7, 2, 1, "#1a1410"), (2, 7, 1, 1, "#4d4d4d"), (3, 7, 2, 1, "#1a1410"), (5, 7, 2, 1, "#c4271a"), (7, 7, 2, 1, "#f0e6cf"), (9, 7, 2, 1, "#c4271a"), (11, 7, 2, 1, "#1a1410"), (13, 7, 1, 1, "#4d4d4d"), (14, 7, 2, 1, "#1a1410"), (0, 8, 2, 1, "#1a1410"), (2, 8, 1, 1, "#4d4d4d"), (3, 8, 2, 1, "#1a1410"), (5, 8, 2, 1, "#c4271a"), (7, 8, 2, 1, "#f0e6cf"), (9, 8, 2, 1, "#c4271a"), (11, 8, 2, 1, "#1a1410"), (13, 8, 1, 1, "#4d4d4d"), (14, 8, 2, 1, "#1a1410"), (0, 9, 2, 1, "#1a1410"), (2, 9, 1, 1, "#4d4d4d"), (3, 9, 2, 1, "#1a1410"), (5, 9, 6, 1, "#c4271a"), (11, 9, 2, 1, "#1a1410"), (13, 9, 1, 1, "#4d4d4d"), (14, 9, 2, 1, "#1a1410"), (0, 10, 2, 1, "#1a1410"), (2, 10, 1, 1, "#4d4d4d"), (3, 10, 3, 1, "#1a1410"), (6, 10, 4, 1, "#c4271a"), (10, 10, 3, 1, "#1a1410"), (13, 10, 1, 1, "#4d4d4d"), (14, 10, 2, 1, "#1a1410"), (0, 11, 3, 1, "#1a1410"), (3, 11, 1, 1, "#4d4d4d"), (4, 11, 8, 1, "#1a1410"), (12, 11, 1, 1, "#4d4d4d"), (13, 11, 3, 1, "#1a1410"), (1, 12, 2, 1, "#1a1410"), (3, 12, 1, 1, "#9a9a9a"), (4, 12, 1, 1, "#4d4d4d"), (5, 12, 6, 1, "#1a1410"), (11, 12, 2, 1, "#4d4d4d"), (13, 12, 2, 1, "#1a1410"), (1, 13, 2, 1, "#1a1410"), (3, 13, 1, 1, "#9a9a9a"), (4, 13, 1, 1, "#1a1410"), (5, 13, 5, 1, "#4d4d4d"), (10, 13, 5, 1, "#1a1410"), (2, 14, 12, 1, "#1a1410"), (4, 15, 8, 1, "#1a1410")])
 ICON_BOOKS = px([(2, 2, 11, 12, "#7b2617"), (3, 3, 9, 10, "#a8341f"), (12, 3, 2, 12, "#efe6cf"),
                  (3, 14, 11, 1, "#efe6cf"), (2, 14, 1, 1, "#4a160c"), (5, 5, 5, 1, "#e3b341"), (5, 7, 5, 1, "#e3b341"),
                  (1, 2, 1, 13, "#4a160c"), (14, 3, 1, 12, "#4a160c"), (2, 15, 13, 1, "#1a1410")])
@@ -184,45 +181,53 @@ ICON_QUILL = px([(11, 1, 3, 1, "#f2efe6"), (9, 2, 5, 1, "#f2efe6"), (8, 3, 5, 1,
 
 
 
-# Inventory pages: content/inventory/<slug>.md
-INVENTORY = [
-    {"slug": "film", "name": "Film", "verb": "Watch", "icon": ICON_FILM, "pos": (30, 34)},
-    {"slug": "music", "name": "Music", "verb": "Listen to", "icon": ICON_MUSIC, "pos": (71, 31)},
-    {"slug": "books", "name": "Books", "verb": "Read", "icon": ICON_BOOKS, "pos": (57, 73)},
-]
+# Inventory tab items: content/inventory/items.txt
+STASH_KINDS = {
+    "film": ("Watch", ICON_FILM), "films": ("Watch", ICON_FILM), "movie": ("Watch", ICON_FILM), "tv": ("Watch", ICON_FILM),
+    "music": ("Listen to", ICON_MUSIC), "album": ("Listen to", ICON_MUSIC), "song": ("Listen to", ICON_MUSIC),
+    "book": ("Read", ICON_BOOKS), "books": ("Read", ICON_BOOKS),
+}
 
 
-def load_inventory():
-    items = []
-    for item in INVENTORY:
-        path = ROOT / "content" / "inventory" / f"{item['slug']}.md"
-        meta, body = parse_front_matter(path.read_text(encoding="utf-8")) if path.exists() else ({}, "")
-        items.append(dict(item,
-                          title=meta.get("title", item["name"]),
-                          examine=meta.get("examine", f"Some {item['name'].lower()} worth keeping."),
-                          url=f"/{item['slug']}/",
-                          content=render_markdown(body, set())))
-    return items
+_stash = None
+
+
+def load_stash():
+    global _stash
+    if _stash is not None:
+        return _stash
+    path = ROOT / "content" / "inventory" / "items.txt"
+    out = _stash = []
+    if not path.exists():
+        return out
+    for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = [x.strip() for x in line.split("|")] + ["", ""]
+        kind, title, link = parts[0].lower(), parts[1], parts[2]
+        if not title or not link:
+            print(f"  items.txt line {n}: skipped (needs at least: category | title | link)")
+            continue
+        verb, icon = STASH_KINDS.get(kind, ("Use", ICON_INVENTORY))
+        out.append({"title": title, "url": link,
+                    "verb": verb, "icon": icon, "external": bool(re.match(r"https?://", link))})
+    return out
 
 # ---------------------------------------------------------------- page chrome
-
-def minimap_nodes(items):
-    return "".join(
-        f'<a class="mm-node" href="{i["url"]}" style="left:{i["pos"][0]}%;top:{i["pos"][1]}%" '
-        f'data-verb="Travel to" data-name="{e(i["name"])}" aria-label="{e(i["name"])}">{i["icon"]}</a>'
-        for i in items
-    )
-
 
 def sidebar(posts, items, tab="quests"):
     quests = "".join(
         f'<li><a href="{p["url"]}" data-quest="{p["slug"]}">{e(p["title"])}</a></li>' for p in posts
     )
-    slots = "".join(
-        f'<li><a class="item" href="{i["url"]}" data-item="{i["slug"]}" data-verb="{i["verb"]}" data-name="{e(i["name"])}" '
-        f'data-examine="{e(i["examine"])}">{i["icon"]}<span class="item-name">{e(i["name"])}</span></a></li>'
-        for i in items
-    ) + '<li class="empty" aria-hidden="true"></li>' * (28 - len(items))
+    stash = load_stash()
+    slot_html = []
+    for i in stash:
+        new_tab = ' target="_blank" rel="noopener"' if i["external"] else ""
+        slot_html.append(
+            '<li><a class="item" href="%s"%s data-item data-verb="%s" data-name="%s" data-examine="%s">%s<span class="item-name">%s</span></a></li>'
+            % (e(i["url"]), new_tab, i["verb"], e(i["title"]), e(i["title"]), i["icon"], e(i["title"])))
+    slots = "".join(slot_html)
 
     def tab_btn(name, label, icon):
         on = name == tab
@@ -239,7 +244,6 @@ def sidebar(posts, items, tab="quests"):
       </div>
       <nav class="minimap" aria-label="World map">
         <span class="mm-land"></span>
-        {minimap_nodes(items)}
         <a class="mm-you" href="/" data-verb="Walk" data-name="home" aria-label="Home"></a>
       </nav>
       <a class="compass" href="/" title="Home" data-verb="Walk" data-name="home" aria-label="Home">N</a>
@@ -363,7 +367,7 @@ def write(rel, text):
 
 def main():
     posts = load_posts()
-    items = load_inventory()
+    items = ()
 
     # Home: content/home.md (title in front matter, body shown above the quest list)
     home_meta, home_body = parse_front_matter((ROOT / "content" / "home.md").read_text(encoding="utf-8")) \
@@ -414,22 +418,6 @@ def main():
               f'<meta http-equiv="refresh" content="0; url={p["url"]}">'
               f'<a href="{p["url"]}">{e(p["title"])}</a>\n')
 
-    # Inventory pages
-    for i in items:
-        body = f"""
-      <article class="scroll">
-        <p class="kicker">Inventory</p>
-        <div class="item-hero" aria-hidden="true">{i['icon']}</div>
-        <h1 class="scroll-title">{e(i['title'])}</h1>
-        <p class="scroll-lede">{e(i['examine'])}</p>
-        <div class="divider" aria-hidden="true"></div>
-        <div class="prose">
-{i['content']}
-        </div>
-      </article>"""
-        write(f"{i['slug']}/index.html",
-              page(posts, items=items, title=i["title"], body=body, path=i["url"], description=i["examine"], tab="inventory"))
-
     # 404
     nf = """
       <section class="scroll">
@@ -442,7 +430,7 @@ def main():
     write("404.html", page(posts, items=items, title="Page not found", body=nf, path="/404.html", extra_head=redirect))
 
     # Sitemap
-    urls = ["/", "/blog/"] + [i["url"] for i in items] + [p["url"] for p in posts]
+    urls = ["/", "/blog/"] + [p["url"] for p in posts]
     sitemap = "\n".join(f"  <url><loc>{SITE['url']}{u}</loc></url>" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sitemap}\n</urlset>\n')
     write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE['url']}/sitemap.xml\n")
