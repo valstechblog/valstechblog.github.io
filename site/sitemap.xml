@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://valstech.blog/</loc></url>
   <url><loc>https://valstech.blog/blog/</loc></url>
+  <url><loc>https://valstech.blog/film/</loc></url>
+  <url><loc>https://valstech.blog/music/</loc></url>
+  <url><loc>https://valstech.blog/books/</loc></url>
   <url><loc>https://valstech.blog/blog/three-days-in-novato/</loc></url>
   <url><loc>https://valstech.blog/blog/representation-in-a-convoluted-media/</loc></url>
   <url><loc>https://valstech.blog/blog/machines-of-loving-taste/</loc></url>

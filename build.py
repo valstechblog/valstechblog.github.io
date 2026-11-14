@@ -30,7 +30,7 @@ OUT = ROOT / "site"
 SITE = {
     "title": "valstechblog",
     "url": "https://valstech.blog",
-    "tagline": "Essays on technology, media and culture",
+    "tagline": "tech, media, culture",
     "twitter": "https://x.com/valstechblog",
     "github": "https://github.com/valstechblog",
 }
@@ -157,107 +157,119 @@ def px(rects, size=16):
 ICON_QUESTS = px([(3, 2, 10, 12, "#e4d19c"), (2, 1, 12, 2, "#9c7a3c"), (2, 13, 12, 2, "#9c7a3c"),
                   (1, 1, 1, 2, "#5a4220"), (14, 1, 1, 2, "#5a4220"), (1, 13, 1, 2, "#5a4220"), (14, 13, 1, 2, "#5a4220"),
                   (5, 5, 6, 1, "#6b4a1e"), (5, 7, 6, 1, "#6b4a1e"), (5, 9, 6, 1, "#6b4a1e"), (5, 11, 3, 1, "#6b4a1e")])
-ICON_STATS = px([(2, 9, 3, 5, "#d33a2c"), (6, 5, 3, 9, "#e8c31c"), (10, 2, 3, 12, "#3fae2a"),
-                 (1, 14, 14, 1, "#1a1410")])
-ICON_FRIENDS = px([(4, 2, 8, 1, "#1a1410"), (3, 3, 10, 10, "#e8c31c"), (2, 4, 1, 8, "#1a1410"), (13, 4, 1, 8, "#1a1410"),
-                   (4, 13, 8, 1, "#1a1410"), (3, 3, 1, 1, "#1a1410"), (12, 3, 1, 1, "#1a1410"), (3, 12, 1, 1, "#1a1410"),
-                   (12, 12, 1, 1, "#1a1410"), (5, 6, 2, 2, "#1a1410"), (9, 6, 2, 2, "#1a1410"), (5, 10, 6, 1, "#1a1410"),
-                   (4, 9, 1, 1, "#1a1410"), (11, 9, 1, 1, "#1a1410")])
 ICON_HOME = px([(7, 1, 2, 1, "#8b2a1a"), (5, 2, 6, 1, "#8b2a1a"), (3, 3, 10, 1, "#8b2a1a"), (1, 4, 14, 2, "#a8341f"),
                 (3, 6, 10, 8, "#cdb48a"), (7, 9, 3, 5, "#5a3a1a"), (4, 8, 2, 2, "#6aa0d8"), (1, 14, 14, 1, "#1a1410")])
 ICON_X = px([(2, 2, 2, 2, "#f0f0f0"), (4, 4, 2, 2, "#f0f0f0"), (6, 6, 4, 4, "#f0f0f0"), (10, 10, 2, 2, "#f0f0f0"),
              (12, 12, 2, 2, "#f0f0f0"), (12, 2, 2, 2, "#f0f0f0"), (10, 4, 2, 2, "#f0f0f0"), (4, 10, 2, 2, "#f0f0f0"),
              (2, 12, 2, 2, "#f0f0f0")])
-ICON_CAL = px([(2, 3, 12, 11, "#e9e1cc"), (2, 3, 12, 3, "#c4271a"), (4, 1, 2, 4, "#1a1410"), (10, 1, 2, 4, "#1a1410"),
-                (4, 8, 2, 2, "#5a4126"), (7, 8, 2, 2, "#5a4126"), (10, 8, 2, 2, "#5a4126"), (4, 11, 2, 2, "#5a4126"),
-                (7, 11, 2, 2, "#c4271a"), (1, 14, 14, 1, "#1a1410")])
+ICON_GITHUB = px([(4, 0, 8, 1, "#f0f0f0"), (2, 1, 12, 1, "#f0f0f0"), (1, 2, 2, 1, "#f0f0f0"), (4, 2, 8, 1, "#f0f0f0"), (13, 2, 2, 1, "#f0f0f0"), (1, 3, 2, 1, "#f0f0f0"), (5, 3, 6, 1, "#f0f0f0"), (13, 3, 2, 1, "#f0f0f0"), (0, 4, 2, 1, "#f0f0f0"), (14, 4, 2, 1, "#f0f0f0"), (0, 5, 2, 1, "#f0f0f0"), (14, 5, 2, 1, "#f0f0f0"), (0, 6, 2, 1, "#f0f0f0"), (14, 6, 2, 1, "#f0f0f0"), (0, 7, 2, 1, "#f0f0f0"), (14, 7, 2, 1, "#f0f0f0"), (0, 8, 2, 1, "#f0f0f0"), (14, 8, 2, 1, "#f0f0f0"), (0, 9, 3, 1, "#f0f0f0"), (13, 9, 3, 1, "#f0f0f0"), (1, 10, 3, 1, "#f0f0f0"), (12, 10, 3, 1, "#f0f0f0"), (1, 11, 1, 1, "#f0f0f0"), (3, 11, 2, 1, "#f0f0f0"), (11, 11, 4, 1, "#f0f0f0"), (1, 12, 2, 1, "#f0f0f0"), (4, 12, 1, 1, "#f0f0f0"), (11, 12, 4, 1, "#f0f0f0"), (2, 13, 3, 1, "#f0f0f0"), (11, 13, 3, 1, "#f0f0f0"), (3, 14, 2, 1, "#f0f0f0"), (11, 14, 2, 1, "#f0f0f0"), (5, 15, 6, 1, "#f0f0f0")])
+ICON_FILM = px([(1, 6, 14, 9, "#2b2b2b"), (1, 6, 14, 1, "#555"), (3, 8, 10, 1, "#777"), (3, 10, 10, 1, "#777"),
+                (3, 12, 10, 1, "#777"), (1, 2, 14, 3, "#f2f2f2"), (1, 2, 1, 3, "#1a1410"), (4, 2, 2, 3, "#1a1410"),
+                (8, 2, 2, 3, "#1a1410"), (12, 2, 2, 3, "#1a1410"), (1, 5, 14, 1, "#1a1410"), (0, 2, 1, 13, "#1a1410"),
+                (15, 2, 1, 13, "#1a1410"), (0, 15, 16, 1, "#1a1410")])
+ICON_MUSIC = px([(6, 1, 8, 2, "#1a1410"), (6, 3, 2, 9, "#1a1410"), (12, 3, 2, 8, "#1a1410"),
+                 (2, 11, 5, 3, "#d9a520"), (3, 10, 3, 1, "#d9a520"), (3, 14, 3, 1, "#d9a520"),
+                 (8, 10, 5, 3, "#d9a520"), (9, 9, 3, 1, "#d9a520"), (9, 13, 3, 1, "#d9a520"),
+                 (7, 3, 1, 1, "#5a4126"), (13, 3, 1, 1, "#5a4126")])
+ICON_BOOKS = px([(2, 2, 11, 12, "#7b2617"), (3, 3, 9, 10, "#a8341f"), (12, 3, 2, 12, "#efe6cf"),
+                 (3, 14, 11, 1, "#efe6cf"), (2, 14, 1, 1, "#4a160c"), (5, 5, 5, 1, "#e3b341"), (5, 7, 5, 1, "#e3b341"),
+                 (1, 2, 1, 13, "#4a160c"), (14, 3, 1, 12, "#4a160c"), (2, 15, 13, 1, "#1a1410")])
+ICON_INVENTORY = px([(6, 1, 4, 2, "#5a3a1a"), (5, 3, 6, 1, "#3d2610"), (4, 4, 8, 1, "#8a5a2b"), (3, 5, 10, 1, "#8a5a2b"),
+                     (2, 6, 12, 7, "#9c6a33"), (3, 13, 10, 1, "#9c6a33"), (4, 14, 8, 1, "#5a3a1a"), (4, 7, 2, 4, "#b8823f"),
+                     (1, 7, 1, 6, "#3d2610"), (14, 7, 1, 6, "#3d2610")])
 ICON_QUILL = px([(11, 1, 3, 1, "#f2efe6"), (9, 2, 5, 1, "#f2efe6"), (8, 3, 5, 1, "#dcd6c8"), (7, 4, 5, 1, "#f2efe6"),
                  (6, 5, 5, 1, "#dcd6c8"), (5, 6, 5, 1, "#f2efe6"), (5, 7, 4, 1, "#dcd6c8"), (4, 8, 4, 1, "#f2efe6"),
                  (4, 9, 3, 1, "#dcd6c8"), (3, 10, 2, 1, "#6b4a1e"), (2, 11, 2, 1, "#6b4a1e"), (1, 12, 2, 2, "#1a1410"),
                  (8, 13, 7, 1, "#1a1410"), (5, 14, 4, 1, "#1a1410")])
 
 
+
+# Inventory pages: content/inventory/<slug>.md
+INVENTORY = [
+    {"slug": "film", "name": "Film", "verb": "Watch", "icon": ICON_FILM, "pos": (30, 34)},
+    {"slug": "music", "name": "Music", "verb": "Listen to", "icon": ICON_MUSIC, "pos": (71, 31)},
+    {"slug": "books", "name": "Books", "verb": "Read", "icon": ICON_BOOKS, "pos": (57, 73)},
+]
+
+
+def load_inventory():
+    items = []
+    for item in INVENTORY:
+        path = ROOT / "content" / "inventory" / f"{item['slug']}.md"
+        meta, body = parse_front_matter(path.read_text(encoding="utf-8")) if path.exists() else ({}, "")
+        items.append(dict(item,
+                          title=meta.get("title", item["name"]),
+                          examine=meta.get("examine", f"Some {item['name'].lower()} worth keeping."),
+                          url=f"/{item['slug']}/",
+                          content=render_markdown(body, set())))
+    return items
+
 # ---------------------------------------------------------------- page chrome
 
-def minimap_dots(posts):
-    dots = []
-    for p in posts:
-        h = zlib.crc32(p["slug"].encode())
-        angle = (h % 360) * math.pi / 180
-        radius = 18 + (h >> 9) % 22
-        x = 50 + radius * math.cos(angle)
-        y = 50 + radius * math.sin(angle)
-        dots.append(f'<span class="mm-dot" style="left:{x:.1f}%;top:{y:.1f}%" title="{e(p["title"])}"></span>')
-    return "".join(dots)
+def minimap_nodes(items):
+    return "".join(
+        f'<a class="mm-node" href="{i["url"]}" style="left:{i["pos"][0]}%;top:{i["pos"][1]}%" '
+        f'data-verb="Travel to" data-name="{e(i["name"])}" aria-label="{e(i["name"])}">{i["icon"]}</a>'
+        for i in items
+    )
 
 
-def sidebar(posts):
+def sidebar(posts, items, tab="quests"):
     quests = "".join(
         f'<li><a href="{p["url"]}" data-quest="{p["slug"]}">{e(p["title"])}</a></li>' for p in posts
     )
-    total_words = sum(p["words"] for p in posts)
-    total_minutes = sum(p["minutes"] for p in posts)
-    first = min(p["date"] for p in posts) if posts else None
-    latest = posts[0]["date"] if posts else None
-    tiles = [
-        (ICON_QUILL, "Essays", f'{len(posts)}', "Quests released"),
-        (ICON_QUESTS, "Words", f'{total_words / 1000:.1f}k', f"{total_words:,} words written"),
-        (ICON_STATS, "Minutes", f'{total_minutes}', "Minutes to read everything"),
-        (ICON_HOME, "Since", f'{first.year}' if first else "-", "Year of the first post"),
-        (ICON_CAL, "Latest", f'{latest:%b %y}' if latest else "-", "Most recent post"),
-        (ICON_FRIENDS, "QP", '<span data-qp>0</span>', "Quest points: posts you've finished reading"),
-    ]
-    tile_html = "".join(
-        f'<div class="skill" title="{e(tip)}">{icon}<span class="skill-name">{name}</span><span class="skill-lvl">{val}</span></div>'
-        for icon, name, val, tip in tiles
-    )
+    slots = "".join(
+        f'<li><a class="item" href="{i["url"]}" data-item="{i["slug"]}" data-verb="{i["verb"]}" data-name="{e(i["name"])}" '
+        f'data-examine="{e(i["examine"])}">{i["icon"]}<span class="item-name">{e(i["name"])}</span></a></li>'
+        for i in items
+    ) + '<li class="empty" aria-hidden="true"></li>' * (28 - len(items))
+
+    def tab_btn(name, label, icon):
+        on = name == tab
+        return (f'<button class="tab{" active" if on else ""}" role="tab" aria-selected="{"true" if on else "false"}" '
+                f'aria-controls="panel-{name}" data-tab="{name}" title="{label}">{icon}</button>')
+
     return f"""
   <aside class="sidepanel stone" aria-label="Side panel">
     <div class="hud">
       <div class="orbs">
-        <a class="orb orb-hp" href="/blog/" title="Quests released"><span class="orb-val">{len(posts)}</span><span class="orb-ball"></span></a>
+        <a class="orb orb-hp" href="/blog/"><span class="orb-val">{len(posts)}</span><span class="orb-ball"></span></a>
         <div class="orb orb-pray" title="Quest points: posts you've finished reading"><span class="orb-val" data-qp>0</span><span class="orb-ball"></span></div>
         <div class="orb orb-run" title="Run energy: drains as you read"><span class="orb-val" id="run-val">100</span><span class="orb-ball"></span></div>
       </div>
-      <a class="minimap" href="/" aria-label="valstechblog home" title="Home">
-        <span class="mm-land"></span>{minimap_dots(posts)}<span class="mm-you"></span>
-      </a>
-      <span class="compass" aria-hidden="true">N</span>
+      <nav class="minimap" aria-label="World map">
+        <span class="mm-land"></span>
+        {minimap_nodes(items)}
+        <a class="mm-you" href="/" data-verb="Walk" data-name="home" aria-label="Home"></a>
+      </nav>
+      <a class="compass" href="/" title="Home" data-verb="Walk" data-name="home" aria-label="Home">N</a>
     </div>
     <div class="tabs" role="tablist" aria-label="Side panel tabs">
-      <button class="tab active" role="tab" aria-selected="true" aria-controls="panel-quests" data-tab="quests" title="Quest List">{ICON_QUESTS}</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="panel-stats" data-tab="stats" title="Stats">{ICON_STATS}</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="panel-friends" data-tab="friends" title="Friends">{ICON_FRIENDS}</button>
+      {tab_btn("quests", "Quest List", ICON_QUESTS)}
+      {tab_btn("inventory", "Inventory", ICON_INVENTORY)}
     </div>
     <div class="tab-body">
-      <section class="panel" id="panel-quests" data-panel="quests" role="tabpanel">
+      <section class="panel" id="panel-quests" data-panel="quests" role="tabpanel"{"" if tab == "quests" else " hidden"}>
         <h2 class="panel-title">Quest List</h2>
         <p class="panel-sub">Quest Points: <span data-qp>0</span>/{len(posts)}</p>
         <ol class="quest-list">{quests}</ol>
         <p class="legend"><span class="q-new">Not started</span> <span class="q-prog">In progress</span> <span class="q-done">Completed</span></p>
       </section>
-      <section class="panel" id="panel-stats" data-panel="stats" role="tabpanel" hidden>
-        <h2 class="panel-title">Stats</h2>
-        <div class="skills">{tile_html}</div>
-        <p class="total-level">Total words: {total_words:,}</p>
-      </section>
-      <section class="panel" id="panel-friends" data-panel="friends" role="tabpanel" hidden>
-        <h2 class="panel-title">Friends List</h2>
-        <ul class="friends">
-          <li><a href="{SITE['twitter']}" target="_blank" rel="noopener"><span>@valstechblog</span><span class="world">X</span></a></li>
-          <li><a href="{SITE['github']}" target="_blank" rel="noopener"><span>valstechblog</span><span class="world">GitHub</span></a></li>
-        </ul>
+      <section class="panel" id="panel-inventory" data-panel="inventory" role="tabpanel"{"" if tab == "inventory" else " hidden"}>
+        <h2 class="panel-title">Inventory</h2>
+        <ul class="inventory">{slots}</ul>
       </section>
     </div>
     <nav class="tabs tabs-bottom" aria-label="Links">
       <a class="tab" href="/" title="Home">{ICON_HOME}</a>
       <a class="tab" href="/blog/" title="All quests">{ICON_QUESTS}</a>
       <a class="tab" href="{SITE['twitter']}" target="_blank" rel="noopener" title="valstechblog on X">{ICON_X}</a>
+      <a class="tab" href="{SITE['github']}" target="_blank" rel="noopener" title="valstechblog on GitHub">{ICON_GITHUB}</a>
     </nav>
   </aside>"""
 
 
-def page(posts, *, title, body, path, description="", slug="", extra_head=""):
+def page(posts, *, title, body, path, description="", slug="", extra_head="", items=(), tab="quests"):
     full_title = SITE["title"] if path == "/" else f"{title} | {SITE['title']}"
     desc = description or SITE["tagline"]
     data = json.dumps({
@@ -299,7 +311,7 @@ def page(posts, *, title, body, path, description="", slug="", extra_head=""):
 {body}
     </div>
   </main>
-{sidebar(posts)}
+{sidebar(posts, items, tab)}
 </div>
 
 <div class="ctx-menu" id="ctx-menu" hidden role="menu"></div>
@@ -337,7 +349,7 @@ def quest_entries(posts):
         rows.append(f"""
         <li class="quest-entry">
           <a class="quest-title" href="{p['url']}" data-quest="{p['slug']}">{e(p['title'])}</a>
-          <p class="quest-meta"><span>Released: <b>{nice_date(p['date'])}</b></span><span>Length: <b>{p['length']}</b></span><span><b>{p['minutes']}</b> min</span></p>
+          <p class="quest-meta"><span>Published: <b>{nice_date(p['date'])}</b></span><span>Length: <b>{p['length']}</b></span><span><b>{p['minutes']}</b> min</span></p>
           <p class="quest-summary">{e(p['summary'])}</p>
         </li>""")
     return "".join(rows)
@@ -351,28 +363,31 @@ def write(rel, text):
 
 def main():
     posts = load_posts()
+    items = load_inventory()
 
-    # Home
+    # Home: content/home.md (title in front matter, body shown above the quest list)
+    home_meta, home_body = parse_front_matter((ROOT / "content" / "home.md").read_text(encoding="utf-8")) \
+        if (ROOT / "content" / "home.md").exists() else ({}, "")
+    home_title = home_meta.get("title", f"Welcome to {SITE['title']}")
+    home_list_title = home_meta.get("list_title", "Latest quests")
+    home_intro = render_markdown(home_body, {p["slug"] for p in posts}) if home_body.strip() else ""
     home = f"""
       <section class="scroll">
-        <h1 class="scroll-title">Welcome to {SITE['title']}</h1>
-        <p class="scroll-lede">Pull up a chair by the fire, adventurer. Pick a quest below to begin.</p>
-        <div class="divider" aria-hidden="true"></div>
-        <h2 class="section-title">Latest quests</h2>
+        <h2 class="section-title">{e(home_list_title)}</h2>
         <ol class="quest-log">{quest_entries(posts[:10])}</ol>
         <p class="more"><a href="/blog/">View the full quest journal &rarr;</a></p>
       </section>"""
-    write("index.html", page(posts, title=SITE["title"], body=home, path="/"))
+    write("index.html", page(posts, items=items, title=SITE["title"], body=home, path="/"))
 
     # Blog index
     blog = f"""
       <section class="scroll">
         <h1 class="scroll-title">Quest Journal</h1>
-        <p class="scroll-lede">{len(posts)} quests released. Completed quests turn green in your Quest List.</p>
+        <p class="scroll-lede">Completed quests turn green in your Quest List.</p>
         <div class="divider" aria-hidden="true"></div>
         <ol class="quest-log">{quest_entries(posts)}</ol>
       </section>"""
-    write("blog/index.html", page(posts, title="Quest Journal", body=blog, path="/blog/"))
+    write("blog/index.html", page(posts, items=items, title="Quest Journal", body=blog, path="/blog/"))
 
     # Posts
     for p in posts:
@@ -380,7 +395,7 @@ def main():
       <article class="scroll post">
         <p class="kicker">Quest journal</p>
         <h1 class="scroll-title">{e(p['title'])}</h1>
-        <p class="post-meta"><span>Released <time datetime="{p['date']:%Y-%m-%d}">{nice_date(p['date'])}</time></span><span>Length: {p['length']}</span><span>{p['minutes']} min read</span></p>
+        <p class="post-meta"><span>Published <time datetime="{p['date']:%Y-%m-%d}">{nice_date(p['date'])}</time></span><span>Length: {p['length']}</span><span>{p['minutes']} min read</span></p>
         <div class="divider" aria-hidden="true"></div>
         <div class="prose">
 {p['content']}
@@ -391,13 +406,29 @@ def main():
         </div>
       </article>"""
         write(f"blog/{p['slug']}/index.html",
-              page(posts, title=p["title"], body=body, path=p["url"], description=p["summary"], slug=p["slug"]))
+              page(posts, items=items, title=p["title"], body=body, path=p["url"], description=p["summary"], slug=p["slug"]))
         # Old Substack-style URL -> new URL
         write(f"p/{p['slug']}/index.html",
               f'<!DOCTYPE html><meta charset="utf-8"><title>Redirecting…</title>'
               f'<link rel="canonical" href="{SITE["url"]}{p["url"]}">'
               f'<meta http-equiv="refresh" content="0; url={p["url"]}">'
               f'<a href="{p["url"]}">{e(p["title"])}</a>\n')
+
+    # Inventory pages
+    for i in items:
+        body = f"""
+      <article class="scroll">
+        <p class="kicker">Inventory</p>
+        <div class="item-hero" aria-hidden="true">{i['icon']}</div>
+        <h1 class="scroll-title">{e(i['title'])}</h1>
+        <p class="scroll-lede">{e(i['examine'])}</p>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="prose">
+{i['content']}
+        </div>
+      </article>"""
+        write(f"{i['slug']}/index.html",
+              page(posts, items=items, title=i["title"], body=body, path=i["url"], description=i["examine"], tab="inventory"))
 
     # 404
     nf = """
@@ -408,10 +439,10 @@ def main():
       </section>"""
     redirect = """<script>(function(){var m=location.pathname.match(/^\\/p\\/([a-z0-9-]+)/);if(m){location.replace('/blog/'+m[1]+'/');}})();</script>
 """
-    write("404.html", page(posts, title="Page not found", body=nf, path="/404.html", extra_head=redirect))
+    write("404.html", page(posts, items=items, title="Page not found", body=nf, path="/404.html", extra_head=redirect))
 
     # Sitemap
-    urls = ["/", "/blog/"] + [p["url"] for p in posts]
+    urls = ["/", "/blog/"] + [i["url"] for i in items] + [p["url"] for p in posts]
     sitemap = "\n".join(f"  <url><loc>{SITE['url']}{u}</loc></url>" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{sitemap}\n</urlset>\n')
     write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE['url']}/sitemap.xml\n")

@@ -53,8 +53,19 @@
   tabs.forEach(function (t) {
     t.addEventListener("click", function () { showTab(t.getAttribute("data-tab")); });
   });
+  // Pages that open a specific tab (e.g. inventory pages) keep it; elsewhere restore the last one used.
+  var activeTab = $(".tabs [data-tab].active");
   var savedTab = load("sessionStorage", "vtb.tab", null);
-  if (savedTab && $('[data-panel="' + savedTab + '"]')) showTab(savedTab);
+  if (activeTab && activeTab.getAttribute("data-tab") !== "quests") {
+    save("sessionStorage", "vtb.tab", activeTab.getAttribute("data-tab"));
+  } else if (savedTab && $('[data-panel="' + savedTab + '"]')) {
+    showTab(savedTab);
+  }
+
+  // Highlight the inventory item for the current page.
+  $$(".item").forEach(function (a) {
+    if (a.getAttribute("href") === window.location.pathname) a.setAttribute("aria-current", "page");
+  });
 
   // Keep the current quest in view in the quest list.
   var currentLink = $('.quest-list [data-quest="' + current + '"]');
@@ -84,6 +95,7 @@
   function describeLink(a) {
     var quest = a.getAttribute("data-quest");
     if (quest && bySlug[quest]) return ["Read", bySlug[quest].title, "target"];
+    if (a.hasAttribute("data-verb")) return [a.getAttribute("data-verb"), a.getAttribute("data-name") || "", "target"];
     var href = a.getAttribute("href") || "";
     if (/^https?:\/\//.test(href)) {
       var host = href.replace(/^https?:\/\/(www\.)?/, "").split("/")[0];
@@ -155,6 +167,17 @@
 
   if (menu) {
     document.addEventListener("contextmenu", function (ev) {
+      var item = ev.target.closest && ev.target.closest("[data-item]");
+      if (item) {
+        ev.preventDefault();
+        var name = item.getAttribute("data-name");
+        openMenu(ev.clientX, ev.clientY, [
+          { label: item.getAttribute("data-verb"), target: name, run: function () { window.location.href = item.getAttribute("href"); } },
+          { label: "Examine", target: name, run: function () { examine(item.getAttribute("data-examine") || name); } },
+          { label: "Cancel" }
+        ]);
+        return;
+      }
       var a = ev.target.closest && ev.target.closest("[data-quest]");
       if (!a) return;
       var p = bySlug[a.getAttribute("data-quest")];
@@ -164,7 +187,7 @@
       openMenu(ev.clientX, ev.clientY, [
         { label: "Read", target: p.title, run: function () { window.location.href = p.url; } },
         { label: "Examine", target: p.title, run: function () {
-            examine("Released " + p.date + ". Length: " + p.length + " (" + p.words.toLocaleString() + " words). " + status);
+            examine("Published " + p.date + ". Length: " + p.length + " (" + p.words.toLocaleString() + " words). " + status);
           } },
         { label: "Cancel" }
       ]);
